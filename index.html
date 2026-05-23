@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PPLG Keren | SMKN 1 Talaga</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/img/logo/logo1.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/img/logo/logo1.jpeg">
+  <link rel="apple-touch-icon" href="Assets/img/logo/logo1.jpeg">
+  <link rel="shortcut icon" href="Assets/img/logo/logo1.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      transition: background 0.2s ease, color 0.2s;
+    }
+
+    [data-bs-theme="dark"] {
+      --bs-body-bg: #0a0c10;
+      --bs-dark-bg-subtle: #111827;
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent !important;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      border-radius: 40px;
+      margin: 0 4px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(59, 130, 246, 0.12);
+      color: #3b82f6 !important;
+    }
+
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      cursor: pointer;
+      border: none;
+      background: var(--bs-card-bg);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    .img-cover-square {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width: 100%;
+      background: #eef2ff;
+      transition: transform 0.3s ease;
+    }
+
+    .img-cover-square:hover {
+      transform: scale(1.02);
+    }
+
+    .project-img-cover {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      width: 100%;
+      background: #f1f5f9;
+      border-radius: 12px;
+    }
+
+    .project-card {
+      border-left: 4px solid #3b82f6;
+      transition: all 0.2s;
+    }
+
+    .social-icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+      font-size: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .social-icon-circle:hover {
+      background: #3b82f6;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .counter-chip {
+      background: rgba(59, 130, 246, 0.15);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .modal-img-custom {
+      border-radius: 1.2rem;
+      max-height: 80vh;
+      width: auto;
+      max-width: 95vw;
+    }
+
+    .siswa-card {
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .siswa-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .gender-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+
+    .gender-female {
+      background: rgba(236, 72, 153, 0.9);
+      color: white;
+    }
+
+    .gender-male {
+      background: rgba(59, 130, 246, 0.9);
+      color: white;
+    }
+
+    .logo-nav {
+      height: 40px;
+      width: auto;
+      border-radius: 0px;
+      object-fit: cover;
+      margin-right: 8px;
+    }
+
+    .preview-overlay {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      border: 2px solid white;
+    }
+
+    .preview-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .preview-overlay img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-overlay .preview-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 0.7rem;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .load-more-btn {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .info-card {
+      transition: all 0.2s;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .info-card:hover {
+      transform: translateX(5px);
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    .hero-full-bg {
+      position: relative;
+      background-image: url('Assets/img/galeri/Galeri20.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-full-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+      z-index: 0;
+    }
+
+    [data-bs-theme="light"] .hero-full-bg::before {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+    }
+
+    .hero-full-bg .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-full-bg h1,
+    .hero-full-bg p,
+    .hero-full-bg .badge,
+    .hero-full-bg small {
+      color: white !important;
+    }
+
+    .hero-full-bg .text-primary {
+      color: #60a5fa !important;
+    }
+
+    .hero-full-bg .text-secondary {
+      color: #e2e8f0 !important;
+    }
+
+    .hero-full-bg .border-secondary {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .hero-full-bg .btn-outline-secondary {
+      color: white;
+      border-color: white;
+    }
+
+    .hero-full-bg .btn-outline-secondary:hover {
+      background: white;
+      color: black;
+    }
+
+    /* ========== RESPONSIVE GRID UNTUK HANDPHONE ========== */
+    @media (max-width: 576px) {
+      .hero-full-bg {
+        background-attachment: scroll;
+        min-height: 80vh;
+      }
+
+      .hero-full-bg .display-3 {
+        font-size: 2rem;
+      }
+
+      /* Perbaikan grid untuk handphone */
+      .row.g-4 {
+        --bs-gutter-y: 1rem;
+        --bs-gutter-x: 0.75rem;
+      }
+
+      /* Card lebih kecil di mobile */
+      .siswa-card .card-body,
+      .card-hover .card-body {
+        padding: 0.5rem !important;
+      }
+
+      .siswa-card .fw-semibold,
+      .card-hover .fw-semibold {
+        font-size: 0.7rem;
+      }
+
+      .gender-badge {
+        padding: 2px 6px;
+        font-size: 0.6rem;
+        top: 5px;
+        right: 5px;
+      }
+
+      /* Load more button lebih kecil */
+      .load-more-btn .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      /* Counter chip lebih kecil */
+      .counter-chip {
+        padding: 4px 12px;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-nav {
+        height: 32px;
+      }
+
+      .preview-overlay {
+        width: 120px;
+        height: 120px;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Preview Hover Element -->
+  <div id="previewOverlay" class="preview-overlay">
+    <img id="previewImg" src="" alt="preview">
+    <div id="previewName" class="preview-name"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary shadow-sm">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <img src="Assets/img/logo/smk.jpeg" alt="Logo SMK" class="logo-nav" onerror="this.style.display='none'">
+        <img src="Assets/img/logo/logo1.jpeg" alt="Logo PPLG" class="logo-nav" onerror="this.style.display='none'">
+        <a class="navbar-brand fw-bold fs-4">PPLG.ONE
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#home"><i class="fas fa-home me-1"></i>Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#siswa"><i class="fas fa-users me-1"></i>SISWA</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-code-branch me-1"></i>Projects</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#gallery"><i class="fas fa-images me-1"></i>Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#social"><i class="fas fa-share-alt me-1"></i>Sosial Media</a>
+          </li>
+        </ul>
+        <div class="d-flex gap-2 align-items-center">
+          <span class="counter-chip"><i class="fas fa-image me-1"></i><span id="totalFotoIndicator">0</span> Foto</span>
+          <button id="darkModeToggle" class="btn btn-outline-secondary rounded-pill px-3">
+            <i class="fas fa-moon"></i> <span class="d-none d-sm-inline">Mode</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HOME SECTION with Full Background Image -->
+    <section id="home" class="hero-full-bg">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mx-auto text-center">
+            <span class="badge bg-primary bg-opacity-25 text-white mb-3 px-3 py-2 rounded-pill">
+              <i class="fas fa-graduation-cap me-1"></i> SMKN 1 Talaga · 2024 - 2027
+            </span>
+            <h1 class="display-3 fw-bold mb-3"><span class="text-primary">PPLG 1</span><br>Pengembangan Perangkat Lunak
+              dan Gim</h1>
+            <p class="lead text-white opacity-90">Generasi pengembang perangkat lunak, desainer UI/UX, dan inovator
+              teknologi. Belajar kolaboratif, berkarya nyata.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+              <a href="#gallery" class="btn btn-primary rounded-pill px-4 py-2"><i
+                  class="fas fa-images me-2"></i>Jelajahi Galeri</a>
+              <a href="#projects" class="btn btn-outline-light rounded-pill px-4 py-2"><i
+                  class="fas fa-rocket me-2"></i>Lihat Projects</a>
+            </div>
+            <div class="row mt-5 g-3 text-center">
+              <div class="col-4">
+                <div class="border-end border-white border-opacity-50">
+                  <h3 class="fw-bold text-white">64</h3>
+                  <small class="text-white opacity-75">Momen & Potret</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="border-end border-white border-opacity-50">
+                  <h3 class="fw-bold text-white">4+</h3>
+                  <small class="text-white opacity-75">Project Unggulan</small>
+                </div>
+              </div>
+              <div class="col-4">
+                <div>
+                  <h3 class="fw-bold text-white">30</h3>
+                  <small class="text-white opacity-75">Siswa Aktif</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SISWA SECTION -->
+    <section id="siswa" class="py-5 bg-body-tertiary">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="badge bg-primary bg-opacity-15 text-primary px-3 py-2 rounded-pill mb-2"><i
+              class="fas fa-user-graduate"></i> Keluarga Besar</span>
+          <h2 class="fw-bold">👨‍🎓 Anggota Kelas PPLG.ONE</h2>
+          <p class="text-secondary col-lg-7 mx-auto">30 siswa kreatif yang siap menjadi generasi digital masa depan</p>
+          <div class="counter-chip d-inline-flex mt-2"><i class="fas fa-users me-2"></i> <span id="siswaCount">0</span>
+            Siswa</div>
+        </div>
+        <div class="row g-4" id="siswaGrid"></div>
+        <div class="load-more-btn" id="siswaLoadMoreBtn">
+          <button class="btn btn-outline-primary rounded-pill px-4" onclick="loadMoreSiswa()"><i
+              class="fas fa-arrow-down me-2"></i>Lihat Lebih Banyak</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="badge bg-primary bg-opacity-15 text-primary px-3 py-2 rounded-pill mb-2"><i
+              class="fas fa-microchip"></i> Portfolio Karya</span>
+          <h2 class="fw-bold">✨ Project Unggulan Kelas</h2>
+          <p class="text-secondary col-lg-7 mx-auto">Hasil karya inovatif dari siswa PPLG.ONE dalam pengembangan
+            aplikasi dan sistem digital</p>
+        </div>
+        <div class="row g-4" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- GALERI SECTION -->
+    <section id="gallery" class="py-5 bg-body-tertiary">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="badge bg-primary bg-opacity-15 text-primary px-3 py-2 rounded-pill"><i
+              class="fas fa-camera-retro"></i> Dokumentasi</span>
+          <h2 class="fw-bold mt-2">📸 Galeri Kegiatan</h2>
+          <p class="text-secondary col-lg-6 mx-auto">Momen kebersamaan PPLG.ONE - Klik foto untuk melihat lebih besar
+          </p>
+          <div class="counter-chip d-inline-flex mt-2"><i class="fas fa-folder-open me-2"></i> total <span
+              id="galleryCounterSpan">34</span> gambar</div>
+        </div>
+        <div class="row g-4" id="galleryGrid"></div>
+        <div class="load-more-btn" id="galleryLoadMoreBtn">
+          <button class="btn btn-outline-primary rounded-pill px-4" onclick="loadMoreGallery()"><i
+              class="fas fa-arrow-down me-2"></i>Lihat Lebih Banyak</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOSIAL MEDIA SECTION with Complete Info -->
+    <section id="social" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="badge bg-primary bg-opacity-15 text-primary px-3 py-2 rounded-pill"><i
+              class="fas fa-share-nodes"></i> Tetap Terhubung</span>
+          <h2 class="fw-bold">Ikuti <span class="text-primary">Perjalanan</span> Kami</h2>
+          <p class="text-secondary col-lg-7 mx-auto">Update kegiatan, karya terbaru, dan inspirasi dari keluarga
+            PPLG.ONE dan SMKN 1 Talaga</p>
+        </div>
+
+        <!-- Kelas Social Media -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <h4 class="text-center mb-4"><i class="fas fa-users text-primary me-2"></i>Media Sosial Kelas PPLG.ONE</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3">
+              <div class="d-flex align-items-center">
+                <div class="social-icon-circle me-3"><i class="fab fa-tiktok"></i></div>
+                <div>
+                  <h6 class="mb-0">TikTok Kelas</h6>
+                  <a href="https://tiktok.com/@11pplg" target="_blank" class="text-decoration-none">@11pplg</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3">
+              <div class="d-flex align-items-center">
+                <div class="social-icon-circle me-3"><i class="fab fa-instagram"></i></div>
+                <div>
+                  <h6 class="mb-0">Instagram Kelas</h6>
+                  <a href="https://instagram.com/11pplg.one" target="_blank"
+                    class="text-decoration-none">@11pplg.one</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sekolah & Jurusan Social Media -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <h4 class="text-center mb-4"><i class="fas fa-building text-primary me-2"></i>SMKN 1 Talaga & Jurusan PPLG
+            </h4>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3 text-center">
+              <i class="fab fa-instagram fa-2x text-primary mb-2"></i>
+              <h6 class="mb-1">Instagram Sekolah</h6>
+              <a href="https://instagram.com/smkn1tlg" target="_blank" class="text-decoration-none small">@smkn1tlg</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3 text-center">
+              <i class="fab fa-instagram fa-2x text-primary mb-2"></i>
+              <h6 class="mb-1">Instagram Jurusan</h6>
+              <a href="https://instagram.com/pplg.smkn1talaga" target="_blank"
+                class="text-decoration-none small">@pplg.smkn1talaga</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3 text-center">
+              <i class="fas fa-globe fa-2x text-primary mb-2"></i>
+              <h6 class="mb-1">Web Jurusan PPLG</h6>
+              <a href="http://pplg.smkn1talaga.sch.id" target="_blank"
+                class="text-decoration-none small">pplg.smkn1talaga.sch.id</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card info-card border-0 shadow-sm p-3 mb-3 text-center">
+              <i class="fas fa-globe fa-2x text-primary mb-2"></i>
+              <h6 class="mb-1">Web Sekolah</h6>
+              <a href="http://smkn1talaga.sch.id" target="_blank"
+                class="text-decoration-none small">smkn1talaga.sch.id</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Info -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card border-0 bg-body-tertiary shadow-sm p-4 text-center">
+              <i class="fas fa-map-pin fa-2x text-primary mb-3"></i>
+              <h5>SMK Negeri 1 Talaga</h5>
+              <p class="mb-0">Jl. Sekolah No. 20, Talaga Kulon, Kec. Talaga, Kab. Majalengka, Jawa Barat 45463</p>
+              <small class="text-secondary mt-2">📞 (0233) 319238 | ✉️ smkn1talaga@sch.id</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL PREVIEW GAMBAR -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body p-0 text-center">
+          <img id="modalPhoto" class="img-fluid rounded-4 shadow-lg modal-img-custom" alt="preview galeri">
+          <p id="modalCaptionText"
+            class="mt-3 text-white fw-semibold bg-dark bg-opacity-60 d-inline-block px-4 py-2 rounded-pill"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 border-top mt-4">
+    <div class="container text-center">
+      <p class="small text-secondary mb-0"><i class="fas fa-heart text-danger"></i> PPLG.ONE - SMKN 1 Talaga ·
+        Kolaborasi & Inovasi</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ======================== DATA ========================
+    // GALERI KEGIATAN (34 gambar)
+    const kegiatanCount = 34;
+    const kegiatanBasePath = "Assets/img/galeri/";
+    const kegiatanFiles = [];
+    for (let i = 1; i <= kegiatanCount; i++) {
+      kegiatanFiles.push(`Galeri${i}.jpg`);
+    }
+
+    // DATA SISWA dengan GENDER
+    const studentData = [
+      { file: "AI_MUHLIAWATI.jpg", gender: "female" },
+      { file: "ALIN_NUR_ALIAH.jpg", gender: "female" },
+      { file: "ALYA_PUTRI_NURARENI.jpg", gender: "female" },
+      { file: "AZIS_MAULANA.jpg", gender: "male" },
+      { file: "DAVIAN_GUSTI_AGRAPRANA.jpg", gender: "male" },
+      { file: "DEP_FRANS_PURNAMALILA_KOSASIH.jpg", gender: "male" },
+      { file: "DZAKI_DZIYA_DZAIFULLOH.jpg", gender: "male" },
+      { file: "FINO_AGUSTIANI_ROMADHON.jpg", gender: "male" },
+      { file: "FIRMAN_HIDAYAT.jpg", gender: "male" },
+      { file: "IRZA_RADITYA_DARMAWAN.jpg", gender: "male" },
+      { file: "IYAN_HIDAYAT.jpg", gender: "male" },
+      { file: "MOCH_RIFKA_AL_FARIZ.jpg", gender: "male" },
+      { file: "MUHAMMAD_AFGHAN_AL_KHAWARIZMI.jpg", gender: "male" },
+      { file: "NAZHAR_PADLAN.jpg", gender: "male" },
+      { file: "NEZHLA_AGUSTIN_NURHALIZA.jpg", gender: "female" },
+      { file: "NINDA_DWIYANTI_SOMANTRI.jpg", gender: "female" },
+      { file: "NOFAL_EKACHYADI.jpg", gender: "male" },
+      { file: "RAFI_MAULANA.jpg", gender: "male" },
+      { file: "RAFI_MUHAMMAD_RODLIANI.jpg", gender: "male" },
+      { file: "REZKY_NUR_AZMI_YUDIANA.jpg", gender: "male" },
+      { file: "RIZKI_ADHAYANI.jpg", gender: "male" },
+      { file: "ROMY_ADHITYA_PERMANA.jpg", gender: "male" },
+      { file: "SAEPULOH.jpg", gender: "male" },
+      { file: "SAUPIYAN_TSAURI.jpg", gender: "male" },
+      { file: "SELPI.jpg", gender: "female" },
+      { file: "SIGITH_SUGIARTO.jpg", gender: "male" },
+      { file: "SYIFA_RAHILA_NURHARITS.jpg", gender: "female" },
+      { file: "VITA_NOVIA.jpg", gender: "female" },
+      { file: "YORIS_YANUAR_FAJAR_ALI.jpg", gender: "male" },
+      { file: "YUNI_FEBRIYANI.jpg", gender: "female" }
+    ];
+    const siswaBasePath = "Assets/img/murid/";
+
+    // PROJECTS
+    const projectsData = [
+      { file: "pr1.png", title: "Perpustakaan Digital", desc: "Sistem perpustakaan dengan dashboard realtime.", tech: "PHP NATIVE, MySQL" },
+      { file: "pr2.png", title: "UangKAS", desc: "Aplikasi manajemen kas kelas digital.", tech: "PHP, LARAVEL, BOOTSTRAP, MYSQL" },
+      { file: "pr3.png", title: "Parkir", desc: "Sistem parkir otomatis berbasis web.", tech: "PHP, HTML, LARAVEL, BOOTSTRAP, MYSQL" },
+      { file: "pr4.png", title: "LandingPage", desc: "Website Techira Indonesia Modern dan responsive.", tech: "PHP, LARAVE, HTML, Bootstrap, MYSQL" }
+    ];
+    const projectsBasePath = "Assets/img/project/";
+
+    // Pagination - responsive items per page
+    let siswaCurrentIndex = 0;
+    let galleryCurrentIndex = 0;
+
+    // Fungsi untuk mendapatkan jumlah item per halaman berdasarkan lebar layar
+    function getItemsPerPage() {
+      if (window.innerWidth < 576) {
+        return 8; // Handphone: 8 item per halaman
+      } else if (window.innerWidth < 768) {
+        return 10; // Tablet kecil: 10 item
+      } else {
+        return 12; // Desktop: 12 item
+      }
+    }
+
+    function formatStudentName(filename) {
+      let name = filename.replace(/\.jpg$/i, '');
+      name = name.replace(/_/g, ' ');
+      let words = name.toLowerCase().split(' ');
+      return words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
+    // DOM elements
+    const galleryGrid = document.getElementById("galleryGrid");
+    const galleryCounterSpan = document.getElementById("galleryCounterSpan");
+    const totalFotoIndicator = document.getElementById("totalFotoIndicator");
+    const projectsGrid = document.getElementById("projectsGrid");
+    const siswaGrid = document.getElementById("siswaGrid");
+    const siswaCountSpan = document.getElementById("siswaCount");
+    const siswaLoadMoreBtn = document.getElementById("siswaLoadMoreBtn");
+    const galleryLoadMoreBtn = document.getElementById("galleryLoadMoreBtn");
+
+    // Preview hover
+    const previewOverlay = document.getElementById("previewOverlay");
+    const previewImg = document.getElementById("previewImg");
+    const previewName = document.getElementById("previewName");
+    let previewTimeout;
+
+    function showPreview(src, name, event) {
+      clearTimeout(previewTimeout);
+      previewImg.src = src;
+      previewName.innerText = name;
+      previewOverlay.classList.add("active");
+      if (event) {
+        let x = event.clientX + 20;
+        let y = event.clientY - 100;
+        if (x + 200 > window.innerWidth) x = window.innerWidth - 220;
+        if (y < 0) y = 10;
+        previewOverlay.style.left = x + "px";
+        previewOverlay.style.top = y + "px";
+        previewOverlay.style.right = "auto";
+        previewOverlay.style.bottom = "auto";
+      }
+    }
+
+    function hidePreview() {
+      clearTimeout(previewTimeout);
+      previewTimeout = setTimeout(() => {
+        previewOverlay.classList.remove("active");
+      }, 100);
+    }
+
+    // Modal
+    let modalBsInstance = null;
+    const modalPhoto = document.getElementById("modalPhoto");
+    const modalCaptionSpan = document.getElementById("modalCaptionText");
+
+    function openModal(src, caption) {
+      if (!modalPhoto || !modalCaptionSpan) return;
+      modalPhoto.src = src;
+      modalPhoto.alt = caption;
+      modalCaptionSpan.innerText = caption;
+      modalPhoto.onerror = () => {
+        modalPhoto.src = 'https://placehold.co/1000x1000/e2e8f0/3b82f6?text=Gambar+tidak+ditemukan&font=montserrat';
+        modalCaptionSpan.innerText = caption + ' (belum tersedia)';
+      };
+      if (modalBsInstance) {
+        modalBsInstance.show();
+      } else {
+        const modalEl = document.getElementById('imageModal');
+        if (modalEl) {
+          modalBsInstance = new bootstrap.Modal(modalEl);
+          modalBsInstance.show();
+        }
+      }
+    }
+
+    // Render siswa
+    function renderSiswa(reset = true) {
+      if (!siswaGrid) return;
+      if (reset) {
+        siswaGrid.innerHTML = '';
+        siswaCurrentIndex = 0;
+      }
+      const itemsPerPage = getItemsPerPage();
+      const endIndex = Math.min(siswaCurrentIndex + itemsPerPage, studentData.length);
+      for (let i = siswaCurrentIndex; i < endIndex; i++) {
+        const student = studentData[i];
+        const imgSrc = siswaBasePath + student.file;
+        const studentName = formatStudentName(student.file);
+        const genderClass = student.gender === 'female' ? 'gender-female' : 'gender-male';
+        const genderText = student.gender === 'female' ? 'Perempuan' : 'Laki-laki';
+        const colDiv = document.createElement('div');
+        colDiv.className = 'col-md-4 col-lg-3 col-sm-6';
+        colDiv.innerHTML = `
+        <div class="card siswa-card h-100 rounded-4 overflow-hidden shadow-sm border-0 position-relative">
+          <span class="gender-badge ${genderClass}"><i class="fas ${student.gender === 'female' ? 'fa-venus' : 'fa-mars'} me-1"></i>${genderText}</span>
+          <div class="position-relative overflow-hidden bg-light">
+            <img src="${imgSrc}" class="img-cover-square" alt="${studentName}" loading="lazy"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x600/e2e8f0/3b82f6?text=No+Image&font=montserrat';">
+          </div>
+          <div class="card-body text-center p-3">
+            <i class="fas ${student.gender === 'female' ? 'fa-female' : 'fa-male'} text-primary me-1"></i>
+            <span class="fw-semibold">${studentName}</span>
+          </div>
+        </div>
+      `;
+        const cardDiv = colDiv.querySelector('.card');
+        const imgElement = colDiv.querySelector('img');
+        imgElement.addEventListener('mouseenter', (e) => showPreview(imgSrc, studentName, e));
+        imgElement.addEventListener('mouseleave', hidePreview);
+        cardDiv.addEventListener('click', () => openModal(imgSrc, studentName));
+        siswaGrid.appendChild(colDiv);
+      }
+      siswaCurrentIndex = endIndex;
+      if (siswaCurrentIndex >= studentData.length) siswaLoadMoreBtn.style.display = 'none';
+      if (siswaCountSpan) siswaCountSpan.innerText = studentData.length;
+    }
+
+    // Render gallery
+    function renderGallery(reset = true) {
+      if (!galleryGrid) return;
+      if (reset) {
+        galleryGrid.innerHTML = '';
+        galleryCurrentIndex = 0;
+      }
+      const itemsPerPage = getItemsPerPage();
+      const endIndex = Math.min(galleryCurrentIndex + itemsPerPage, kegiatanFiles.length);
+      for (let i = galleryCurrentIndex; i < endIndex; i++) {
+        const file = kegiatanFiles[i];
+        const imgSrc = kegiatanBasePath + file;
+        const match = file.match(/Galeri(\d+)\.jpg/i);
+        const caption = match ? `📸 Kegiatan ${match[1]} · PPLG.ONE` : file.replace(/\.jpg$/i, '');
+        const colDiv = document.createElement('div');
+        colDiv.className = 'col-md-6 col-lg-4 col-xl-3';
+        colDiv.innerHTML = `
+        <div class="card card-hover h-100 rounded-4 overflow-hidden shadow-sm border-0">
+          <div class="position-relative overflow-hidden bg-light">
+            <img src="${imgSrc}" class="img-cover-square" alt="${caption}" loading="lazy"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x600/e2e8f0/3b82f6?text=Image+Not+Found&font=montserrat';">
+          </div>
+          <div class="card-body text-center p-3">
+            <i class="fas fa-camera text-primary me-1"></i>
+            <span class="fw-semibold small">${caption.length > 30 ? caption.slice(0, 28) + '...' : caption}</span>
+          </div>
+        </div>
+      `;
+        const cardDiv = colDiv.querySelector('.card');
+        const imgElement = colDiv.querySelector('img');
+        imgElement.addEventListener('mouseenter', (e) => showPreview(imgSrc, caption, e));
+        imgElement.addEventListener('mouseleave', hidePreview);
+        cardDiv.addEventListener('click', () => openModal(imgSrc, caption));
+        galleryGrid.appendChild(colDiv);
+      }
+      galleryCurrentIndex = endIndex;
+      if (galleryCurrentIndex >= kegiatanFiles.length) galleryLoadMoreBtn.style.display = 'none';
+      if (galleryCounterSpan) galleryCounterSpan.innerText = kegiatanFiles.length;
+      if (totalFotoIndicator) totalFotoIndicator.innerText = kegiatanFiles.length;
+    }
+
+    function loadMoreSiswa() { renderSiswa(false); }
+    function loadMoreGallery() { renderGallery(false); }
+
+    // Render projects
+    function renderProjects() {
+      if (!projectsGrid) return;
+      projectsGrid.innerHTML = '';
+      projectsData.forEach(project => {
+        const imgPath = projectsBasePath + project.file;
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-3';
+        col.innerHTML = `
+        <div class="card project-card h-100 shadow-sm border-0">
+          <img src="${imgPath}" class="project-img-cover p-2" alt="${project.title}" 
+               onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/3b82f6?text=Preview+Project&font=montserrat';">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">${project.title}</h5>
+            <p class="card-text text-secondary">${project.desc}</p>
+            <span class="badge bg-light text-dark">${project.tech}</span>
+          </div>
+        </div>
+      `;
+        projectsGrid.appendChild(col);
+      });
+    }
+
+    // Dark Mode
+    const toggleBtn = document.getElementById("darkModeToggle");
+    const htmlElement = document.documentElement;
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        htmlElement.setAttribute('data-bs-theme', 'dark');
+        localStorage.setItem('pplgTheme', 'dark');
+        if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span class="d-none d-sm-inline">Terang</span>';
+      } else {
+        htmlElement.setAttribute('data-bs-theme', 'light');
+        localStorage.setItem('pplgTheme', 'light');
+        if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span class="d-none d-sm-inline">Mode</span>';
+      }
+    }
+    function initTheme() {
+      const saved = localStorage.getItem('pplgTheme');
+      if (saved === 'dark') setTheme('dark');
+      else if (saved === 'light') setTheme('light');
+      else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
+    }
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const current = htmlElement.getAttribute('data-bs-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // Smooth Scroll
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          }
+        }
+      });
+    });
+
+    const sections = ['home', 'siswa', 'projects', 'gallery', 'social'];
+    function updateActiveOnScroll() {
+      let scrollPos = window.scrollY + 120;
+      for (let sec of sections) {
+        const section = document.getElementById(sec);
+        if (section) {
+          const offsetTop = section.offsetTop;
+          const offsetBottom = offsetTop + section.offsetHeight;
+          if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sec}`) link.classList.add('active');
+            });
+            break;
+          }
+        }
+      }
+    }
+    window.addEventListener('scroll', updateActiveOnScroll);
+
+    // Resize handler untuk update grid jika layar diubah
+    let resizeTimeout;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () {
+        // Reset dan reload grid dengan ukuran baru
+        renderGallery(true);
+        renderSiswa(true);
+      }, 250);
+    });
+
+    // INIT
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+      renderGallery(true);
+      renderSiswa(true);
+      initTheme();
+      const modalEl = document.getElementById('imageModal');
+      if (modalEl) modalBsInstance = new bootstrap.Modal(modalEl);
+      console.log(`✅ Website siap | Galeri: ${kegiatanFiles.length} | Siswa: ${studentData.length} | Projects: ${projectsData.length}`);
+    });
+  </script>
+</body>
+
+</html>
