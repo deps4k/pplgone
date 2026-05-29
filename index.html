@@ -404,7 +404,7 @@
             <div class="row mt-5 g-3 text-center">
               <div class="col-4">
                 <div class="border-end border-white border-opacity-50">
-                  <h3 class="fw-bold text-white">64</h3>
+                  <h3 class="fw-bold text-white">80</h3>
                   <small class="text-white opacity-80">Momen & Potret</small>
                 </div>
               </div>
@@ -597,8 +597,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // ======================== DATA ========================
-    // GALERI KEGIATAN (34 gambar)
-    const kegiatanCount = 34;
+    // GALERI KEGIATAN (80 gambar)
+    const kegiatanCount = 80;
     const kegiatanBasePath = "Assets/img/galeri/";
     const kegiatanFiles = [];
     for (let i = 1; i <= kegiatanCount; i++) {
@@ -645,7 +645,7 @@
       { file: "pr1.png", title: "Perpustakaan Digital", desc: "Sistem perpustakaan dengan dashboard realtime.", tech: "PHP NATIVE, MySQL" },
       { file: "pr2.png", title: "UangKAS", desc: "Aplikasi manajemen kas kelas digital.", tech: "PHP, LARAVEL, BOOTSTRAP, MYSQL" },
       { file: "pr3.png", title: "Parkir", desc: "Sistem parkir otomatis berbasis web.", tech: "PHP, HTML, LARAVEL, BOOTSTRAP, MYSQL" },
-      { file: "pr4.png", title: "LandingPage", desc: "Website Techira Indonesia Modern dan responsive.", tech: "PHP, LARAVE, HTML, Bootstrap, MYSQL" }
+      { file: "pr4.png", title: "LandingPage", desc: "Website Techira Indonesia Modern dan responsive.", tech: "PHP, LARAVE, HTML, BOOTSTRAP, MYSQL" }
     ];
     const projectsBasePath = "Assets/img/project/";
 
@@ -791,7 +791,7 @@
         const file = kegiatanFiles[i];
         const imgSrc = kegiatanBasePath + file;
         const match = file.match(/Galeri(\d+)\.jpg/i);
-        const caption = match ? `📸 Kegiatan ${match[1]} · PPLG.ONE` : file.replace(/\.jpg$/i, '');
+        const caption = match ? `Kegiatan ${match[1]} · PPLG.ONE` : file.replace(/\.jpg$/i, '');
         const colDiv = document.createElement('div');
         colDiv.className = 'col-md-6 col-lg-4 col-xl-3';
         colDiv.innerHTML = `
@@ -930,7 +930,7 @@
       initTheme();
       const modalEl = document.getElementById('imageModal');
       if (modalEl) modalBsInstance = new bootstrap.Modal(modalEl);
-      console.log(`✅ Website siap | Galeri: ${kegiatanFiles.length} | Siswa: ${studentData.length} | Projects: ${projectsData.length}`);
+      console.log(`Website siap | Galeri: ${kegiatanFiles.length} | Siswa: ${studentData.length} | Projects: ${projectsData.length}`);
     });
   </script>
 </body>
