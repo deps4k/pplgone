@@ -6,252 +6,101 @@
     <title>Siswa PPLG SMKN 1 Talaga</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Inter', sans-serif; }
-        .transition-smooth { transition: all 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.02); }
-        .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gender-male { background: rgba(59, 130, 246, 0.85); }
-        .gender-female { background: rgba(219, 39, 119, 0.85); }
-        .social-link-card {
-            display: flex;
-            align-items: center;
-            padding: 0.9rem 1.2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(128, 128, 128, 0.15);
-            background: #1f2937;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: #fff;
-        }
-        .social-link-card:hover {
-            background: #374151;
-            border-color: #3b82f6;
-            transform: translateX(5px);
-        }
-        .icon-circle {
-            width: 44px;
-            height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            font-size: 1.3rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <img src="Assets/img/logo/logo1.jpeg" alt="Logo" class="w-10 h-10 rounded-full object-cover">
-                    <span class="text-xl font-bold text-gray-800">PPLG.ONE</span>
-                </div>
-                <div class="hidden md:flex items-center gap-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Beranda</a>
-                    <a href="siswa.html" class="text-blue-600 font-semibold">Siswa</a>
-                    <a href="proyek.html" class="text-gray-600 hover:text-blue-600 transition">Proyek</a>
-                    <a href="galeri.html" class="text-gray-600 hover:text-blue-600 transition">Galeri</a>
-                    <a href="kontak.html" class="text-gray-600 hover:text-blue-600 transition">Kontak</a>
-                </div>
-                <button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="Assets/img/logo/logo1.jpeg" alt="Logo PPLG" class="navbar-logo">
+                <span class="navbar-title">PPLG.ONE</span>
+            </div>
+            <button class="menu-toggle" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="siswa.html" class="nav-link active">Siswa</a>
+                <a href="proyek.html" class="nav-link">Proyek</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="kontak.html" class="nav-link">Kontak</a>
             </div>
         </div>
-    </nav>
+    </nav>  
 
-    <!-- Hero -->
-    <section class="pt-20 pb-12 gradient-bg text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Profil Siswa</h1>
-            <p class="text-lg text-white/90 max-w-2xl mx-auto">Anggota Kelas PPLG.ONE - Siswa dengan semangat kolaborasi</p>
-            <span class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mt-4">
-                <i class="fas fa-users mr-2"></i> Total <span id="siswaCount">0</span> Siswa
-            </span>
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Profil Siswa</h1>
+            <p>Anggota Kelas PPLG.ONE - Siswa dengan semangat kolaborasi</p>
+            <span class="badge"><i class="fas fa-users"></i> Total <span id="siswaCount">0</span> Siswa</span>
         </div>
     </section>
 
     <!-- Siswa Grid -->
-    <section class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="siswaGrid"></div>
-            <div id="loadMoreContainer" class="text-center mt-12">
-                <button onclick="loadMoreSiswa()" class="bg-white border-2 border-gray-300 px-8 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-smooth">
-                    Lihat Lebih Banyak <i class="fas fa-chevron-down ml-2"></i>
-                </button>
+    <section class="content-section">
+        <div class="container">
+            <!-- Data siswa (semua bisa ditampilkan) -->
+            <div id="siswaGrid" class="student-grid class-data"></div>
+            
+            <!-- Placeholder untuk kelas XII -->
+            <div class="class-placeholder class-placeholder-xii">
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">📅</div>
+                    <h3>Data Kelas XII Angkatan 2027 akan segera hadir!</h3>
+                    <p>Publikasi data siswa kelas XII akan tersedia pada:</p>
+                    <div class="countdown-timer"></div>
+                    <p style="margin-top: 12px; font-size: 0.85rem; opacity: 0.7;">
+                        <i class="fas fa-info-circle"></i> Data siswa kelas X dan XI sudah dapat diakses
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <div class="space-y-4">
-                    <a href="https://tiktok.com/@11pplg" target="_blank" class="social-link-card">
-                        <div class="icon-circle mr-3"><i class="fab fa-tiktok"></i></div>
-                        <div>
-                            <h6 class="mb-0">TikTok Kelas</h6>
-                            <span class="text-sm text-gray-400">@11pplg</span>
-                        </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-social">
+                    <a href="https://tiktok.com/@11pplg" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i> TikTok Kelas
                     </a>
-                    <a href="https://instagram.com/11pplg.one" target="_blank" class="social-link-card">
-                        <div class="icon-circle mr-3"><i class="fab fa-instagram"></i></div>
-                        <div>
-                            <h6 class="mb-0">Instagram Kelas</h6>
-                            <span class="text-sm text-gray-400">@12pplg.one</span>
-                        </div>
+                    <a href="https://instagram.com/11pplg.one" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Instagram Kelas
+                    </a>
+                    <a href="https://instagram.com/smkn1tlg" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Sekolah @smkn1tlg
+                    </a>
+                    <a href="https://instagram.com/pplg.smkn1talaga" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Jurusan PPLG
                     </a>
                 </div>
-                <div class="space-y-4">
-                    <a href="https://instagram.com/smkn1tlg" target="_blank" class="social-link-card">
-                        <div class="icon-circle mr-3"><i class="fab fa-instagram"></i></div>
-                        <div>
-                            <h6 class="mb-0">Sekolah @smkn1tlg</h6>
-                            <span class="text-sm text-gray-400">instagram.com/smkn1tlg</span>
-                        </div>
-                    </a>
-                    <a href="https://instagram.com/pplg.smkn1talaga" target="_blank" class="social-link-card">
-                        <div class="icon-circle mr-3"><i class="fab fa-instagram"></i></div>
-                        <div>
-                            <h6 class="mb-0">Jurusan PPLG</h6>
-                            <span class="text-sm text-gray-400">@pplg.smkn1talaga</span>
-                        </div>
-                    </a>
+                <div class="footer-info">
+                    <h4>SMK Negeri 1 Talaga</h4>
+                    <p>Jl. Sekolah No. 20, Talaga Kulon, Kec. Talaga, Kab. Majalengka, Jawa Barat 45463</p>
+                    <p><i class="fas fa-phone"></i> (0233) 319238</p>
+                    <p><i class="fas fa-envelope"></i> smkn1talaga@sch.id</p>
+                    <p>
+                        <a href="http://smkn1talaga.sch.id" target="_blank">smkn1talaga.sch.id</a>
+                        <span>•</span>
+                        <a href="http://pplg.smkn1talaga.sch.id" target="_blank">pplg.smkn1talaga.sch.id</a>
+                    </p>
                 </div>
             </div>
-
-            <div class="bg-gray-800 rounded-2xl p-6 text-center border border-gray-700">
-                <i class="fas fa-map-marker-alt text-blue-400 text-2xl mb-3"></i>
-                <h5 class="text-lg font-semibold text-white">SMK Negeri 1 Talaga</h5>
-                <p class="text-sm text-gray-400">Jl. Sekolah No. 20, Talaga Kulon, Kec. Talaga, Kab. Majalengka, Jawa Barat 45463</p>
-                <div class="flex flex-wrap justify-center gap-4 mt-3">
-                    <span class="text-sm text-gray-400"><i class="fas fa-phone mr-1"></i> (0233) 319238</span>
-                    <span class="text-sm text-gray-400"><i class="fas fa-envelope mr-1"></i> smkn1talaga@sch.id</span>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4 mt-3">
-                    <a href="http://smkn1talaga.sch.id" target="_blank" class="text-sm text-blue-400 hover:text-blue-300 transition">smkn1talaga.sch.id</a>
-                    <span class="text-gray-600">•</span>
-                    <a href="http://pplg.smkn1talaga.sch.id" target="_blank" class="text-sm text-blue-400 hover:text-blue-300 transition">pplg.smkn1talaga.sch.id</a>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-6 text-center">
-                <p class="text-sm text-gray-500">&copy; 2024 PPLG.ONE · SMKN 1 Talaga · Dibangun dengan performa tinggi & desain profesional</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PPLG.ONE · SMKN 1 Talaga</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        const studentsRaw = [
-            { file: "AI_MUHLIAWATI.jpg", gender: "female" },
-            { file: "ALIN_NUR_ALIAH.jpg", gender: "female" },
-            { file: "ALYA_PUTRI_NURARENI.jpg", gender: "female" },
-            { file: "AZIS_MAULANA.jpg", gender: "male" },
-            { file: "DAVIAN_GUSTI_AGRAPRANA.jpg", gender: "male" },
-            { file: "DEP_FRANS_PURNAMALILA_KOSASIH.jpg", gender: "male" },
-            { file: "DZAKI_DZIYA_DZAIFULLOH.jpg", gender: "male" },
-            { file: "FINO_AGUSTIANI_ROMADHON.jpg", gender: "male" },
-            { file: "FIRMAN_HIDAYAT.jpg", gender: "male" },
-            { file: "IRZA_RADITYA_DARMAWAN.jpg", gender: "male" },
-            { file: "IYAN_HIDAYAT.jpg", gender: "male" },
-            { file: "MOCH_RIFKA_AL_FARIZ.jpg", gender: "male" },
-            { file: "MUHAMMAD_AFGHAN_AL_KHAWARIZMI.jpg", gender: "male" },
-            { file: "NAZHAR_PADLAN.jpg", gender: "male" },
-            { file: "NEZHLA_AGUSTIN_NURHALIZA.jpg", gender: "female" },
-            { file: "NINDA_DWIYANTI_SOMANTRI.jpg", gender: "female" },
-            { file: "NOFAL_EKACHYADI.jpg", gender: "male" },
-            { file: "RAFI_MAULANA.jpg", gender: "male" },
-            { file: "RAFI_MUHAMMAD_RODLIANI.jpg", gender: "male" },
-            { file: "REZKY_NUR_AZMI_YUDIANA.jpg", gender: "male" },
-            { file: "RIZKI_ADHAYANI.jpg", gender: "male" },
-            { file: "ROMY_ADHITYA_PERMANA.jpg", gender: "male" },
-            { file: "SAEPULOH.jpg", gender: "male" },
-            { file: "SAUPIYAN_TSAURI.jpg", gender: "male" },
-            { file: "SELPI.jpg", gender: "female" },
-            { file: "SIGITH_SUGIARTO.jpg", gender: "male" },
-            { file: "SYIFA_RAHILA_NURHARITS.jpg", gender: "female" },
-            { file: "VITA_NOVIA.jpg", gender: "female" },
-            { file: "YORIS_YANUAR_FAJAR_ALI.jpg", gender: "male" },
-            { file: "YUNI_FEBRIYANI.jpg", gender: "female" }
-        ];
-
-        const siswaBasePath = "Assets/img/murid/";
-        let siswaCurrent = 0;
-        const perPage = 12;
-
-        function formatName(filename) {
-            let name = filename.replace(/\.jpg$/i, '');
-            name = name.replace(/_/g, ' ');
-            return name.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-        }
-
-        function renderSiswa(reset = true) {
-            if (reset) {
-                document.getElementById("siswaGrid").innerHTML = "";
-                siswaCurrent = 0;
-            }
-            const grid = document.getElementById("siswaGrid");
-            const end = Math.min(siswaCurrent + perPage, studentsRaw.length);
-            
-            for (let i = siswaCurrent; i < end; i++) {
-                const s = studentsRaw[i];
-                const imgSrc = siswaBasePath + s.file;
-                const name = formatName(s.file);
-                const isFemale = s.gender === 'female';
-                const genderIcon = isFemale ? 'fa-venus' : 'fa-mars';
-                const genderText = isFemale ? 'Perempuan' : 'Laki-laki';
-                const genderClass = isFemale ? 'gender-female' : 'gender-male';
-
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-xl overflow-hidden card-shadow hover-scale transition-smooth cursor-pointer";
-                card.innerHTML = `
-                    <div class="relative">
-                        <img src="${imgSrc}" alt="${name}" class="w-full aspect-square object-cover" loading="lazy"
-                             onerror="this.src='https://placehold.co/400x400/e2e8f0/3b82f6?text=No+Image'">
-                        <div class="absolute top-3 right-3 ${genderClass} text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-1">
-                            <i class="fas ${genderIcon}"></i> ${genderText}
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <span class="font-semibold text-sm">${name}</span>
-                    </div>
-                `;
-                grid.appendChild(card);
-            }
-            
-            siswaCurrent = end;
-            document.getElementById("siswaCount").textContent = studentsRaw.length;
-            
-            if (siswaCurrent >= studentsRaw.length) {
-                document.getElementById("loadMoreContainer").style.display = 'none';
-            }
-        }
-
-        function loadMoreSiswa() {
-            renderSiswa(false);
-        }
-
-        document.getElementById('menuBtn').addEventListener('click', function() {
-            const nav = document.querySelector('.md\\:flex');
-            nav.classList.toggle('hidden');
-            nav.classList.toggle('flex');
-            nav.classList.toggle('flex-col');
-            nav.classList.toggle('absolute');
-            nav.classList.toggle('top-16');
-            nav.classList.toggle('left-0');
-            nav.classList.toggle('w-full');
-            nav.classList.toggle('bg-white');
-            nav.classList.toggle('p-4');
-            nav.classList.toggle('shadow-lg');
-        });
-
-        renderSiswa(true);
-    </script>
+    <script src="config.js"></script>
+    <script src="students.js"></script>
+    <script src="wali-kelas.js"></script>
+    <script src="gallery.js"></script>
+    <script src="projects.js"></script>
+    <script src="app.js"></script>
 </body>
-</html>
+</html> 
