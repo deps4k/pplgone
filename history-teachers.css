@@ -1,0 +1,126 @@
+/* history-teachers.css - Styling untuk riwayat wali kelas */
+.history-teacher-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.history-teacher-section .section-header {
+    margin-bottom: 2rem;
+}
+
+.history-teacher-section .grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.history-teacher-section .card {
+    transition: all 0.3s ease;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.history-teacher-section .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); 
+}
+
+.history-teacher-section .card .icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.history-teacher-section .card .icon-wrapper i {
+    font-size: 1.5rem;
+    color: #3b82f6;
+}
+
+.history-teacher-section .card .year-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+}
+
+.history-teacher-section .card .class-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.history-teacher-section .card .teacher-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.history-teacher-section .card .teacher-name.hidden {
+    color: #9ca3af;
+}
+
+.history-teacher-section .card .gender-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.history-teacher-section .card .status-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    margin-left: 0.5rem;
+}
+
+.history-teacher-section .card .status-badge.active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.history-teacher-section .card .status-badge.waiting {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .history-teacher-section .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .history-teacher-section .card {
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .history-teacher-section .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .history-teacher-section .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
