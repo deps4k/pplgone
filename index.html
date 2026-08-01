@@ -1,258 +1,178 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PPLG SMKN 1 Talaga</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <style>
-    * {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .transition-smooth {
-      transition: all 0.3s ease;
-    }
-
-    .hover-scale:hover {
-      transform: scale(1.02);
-    }
-
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .social-link-card {
-      display: flex;
-      align-items: center;
-      padding: 0.9rem 1.2rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(128, 128, 128, 0.15);
-      background: #fff;
-      transition: all 0.2s;
-      text-decoration: none;
-      color: #1a1a1a;
-    }
-
-    .social-link-card:hover {
-      background: rgba(13, 110, 253, 0.04);
-      border-color: #3b82f6;
-      transform: translateX(5px);
-    }
-
-    .icon-circle {
-      width: 44px;
-      height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      background: rgba(13, 110, 253, 0.1);
-      color: #3b82f6;
-      font-size: 1.3rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPLG.ONE - SMKN 1 Talaga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md fixed w-full z-50">
-    <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <img src="Assets/img/logo/logo1.jpeg" alt="Logo" class="w-10 h-10 rounded-full object-cover">
-          <span class="text-xl font-bold text-gray-800">PPLG.ONE</span>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="Assets/img/logo/logo1.jpeg" alt="Logo PPLG" class="navbar-logo">
+                <span class="navbar-title">PPLG.ONE</span>
+            </div>
+            <button class="menu-toggle" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Beranda</a>
+                <a href="siswa.html" class="nav-link">Siswa</a>
+                <a href="proyek.html" class="nav-link">Proyek</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="kontak.html" class="nav-link">Kontak</a>
+            </div>
         </div>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="index.html" class="text-blue-600 font-semibold">Beranda</a>
-          <a href="siswa.html" class="text-gray-600 hover:text-blue-600 transition">Siswa</a>
-          <a href="proyek.html" class="text-gray-600 hover:text-blue-600 transition">Proyek</a>
-          <a href="galeri.html" class="text-gray-600 hover:text-blue-600 transition">Galeri</a>
-          <a href="kontak.html" class="text-gray-600 hover:text-blue-600 transition">Kontak</a>
-        </div>
-        <button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center relative overflow-hidden pt-16">
-    <div class="absolute inset-0 gradient-bg opacity-90"></div>
-    <img src="Assets/img/galeri/Galeri20.jpg" alt="Background"
-      class="absolute inset-0 w-full h-full object-cover opacity-20" loading="lazy">
-    <div class="container mx-auto px-4 relative z-10 text-white text-center">
-      <div class="max-w-4xl mx-auto">
-        <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-4">
-          SMKN 1 Talaga · Kompetensi Keahlian
-        </span>
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          Pengembangan Perangkat Lunak
-          <span class="text-yellow-300">dan Gim (PPLG)</span>
-        </h1>
-        <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          Mencetak developer profesional, UI/UX designer, dan technopreneur siap industri 4.0
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="galeri.html"
-            class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-smooth hover-scale">
-            Explore Galeri <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-          <a href="proyek.html"
-            class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-smooth">
-            Lihat Portfolio
-          </a>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <img src="Assets/img/galeri/Galeri20.jpg" alt="Background" class="hero-bg-image" loading="lazy">
+            <div class="hero-overlay"></div>
         </div>
-        <!-- Statistik & Wali Kelas -->
-        <div class="mt-12 max-w-2xl mx-auto">
-          <!-- Statistik -->
-          <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <h3 class="text-2xl font-bold" id="totalGallery">0</h3>
-              <p class="text-sm text-white/80">Dokumentasi</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <h3 class="text-2xl font-bold" id="totalStudents">0</h3>
-              <p class="text-sm text-white/80">Siswa Aktif</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <h3 class="text-2xl font-bold">4</h3>
-              <p class="text-sm text-white/80">Proyek</p>
-            </div>
-          </div>
-
-          <!-- Wali Kelas -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="md:col-start-2 bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20">
-              <div class="flex items-center justify-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-blue-500/30 flex items-center justify-center text-2xl">
-                  <i class="fas fa-chalkboard-teacher"></i>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">SMKN 1 Talaga · Kompetensi Keahlian</span>
+                <h1 class="hero-title">
+                    Pengembangan Perangkat Lunak<br>
+                    <span class="hero-highlight">dan Gim (PPLG)</span>
+                </h1>
+                <p class="hero-description">
+                    Mencetak developer profesional, UI/UX designer, dan technopreneur siap industri 4.0
+                </p>
+                <div class="hero-buttons">
+                    <a href="galeri.html" class="btn btn-primary">
+                        Explore Galeri <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="proyek.html" class="btn btn-outline">
+                        Lihat Portfolio
+                    </a>
                 </div>
-                <div class="text-left">
-                  <h4 class="font-bold text-sm md:text-base">Panji Ajwar Pebriana S.Pd</h4>
-                  <p class="text-xs text-white/70">Wali Kelas 12 PPLG 1</p>
+                
+                <!-- Hero Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3 id="totalGallery">0</h3>
+                        <p>Dokumentasi</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="totalStudents">0</h3>
+                        <p>Siswa Aktif</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="totalProjects">0</h3>
+                        <p>Proyek</p>
+                    </div>
                 </div>
-              </div>
+                
+                <!-- Homeroom Teacher -->
+                <div id="homeroomTeacher" class="class-data"></div>
+                
+                <!-- Placeholder untuk kelas XII -->
+                <div class="class-placeholder class-placeholder-xii">
+                    <div class="placeholder-card">
+                        <div class="placeholder-icon">📅</div>
+                        <h3>Data Kelas XII Angkatan 2027 akan segera hadir!</h3>
+                        <p>Publikasi data kelas XII akan tersedia pada:</p>
+                        <div class="countdown-timer"></div>
+                        <p style="margin-top: 12px; font-size: 0.85rem; opacity: 0.7;">
+                            <i class="fas fa-info-circle"></i> Data kelas X dan XI sudah dapat diakses
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center max-w-3xl mx-auto">
-        <span class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-          <i class="fas fa-info-circle mr-2"></i>Tentang Kami
-        </span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Kompetensi Keahlian PPLG</h2>
-        <p class="text-gray-600 text-lg leading-relaxed">
-          Program Keahlian Pengembangan Perangkat Lunak dan Gim (PPLG) adalah salah satu kompetensi keahlian
-          di SMKN 1 Talaga yang berfokus pada pengembangan aplikasi, website, dan game.
-          Kami membekali siswa dengan keterampilan pemrograman, desain UI/UX, dan manajemen proyek TI.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <!-- Social Links Kiri -->
-        <div class="space-y-4">
-          <a href="https://tiktok.com/@11pplg" target="_blank"
-            class="social-link-card bg-gray-800 border-gray-700 hover:bg-gray-700">
-            <div class="icon-circle bg-gray-700 text-white mr-3"><i class="fab fa-tiktok"></i></div>
-            <div>
-              <h6 class="mb-0 text-white">TikTok Kelas</h6>
-              <span class="text-sm text-gray-400">@11pplg</span>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <span class="section-badge">
+                    <i class="fas fa-info-circle"></i> Tentang Kami
+                </span>
+                <h2 class="section-title">Kompetensi Keahlian PPLG</h2>
+                <p class="about-text">
+                    Program Keahlian Pengembangan Perangkat Lunak dan Gim (PPLG) adalah salah satu kompetensi keahlian 
+                    di SMKN 1 Talaga yang berfokus pada pengembangan aplikasi, website, dan game. 
+                    Kami membekali siswa dengan keterampilan pemrograman, desain UI/UX, dan manajemen proyek TI.
+                </p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-code"></i>
+                        <h4>Pemrograman</h4>
+                        <p>PHP, Laravel, JavaScript</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>UI/UX Design</h4>
+                        <p>Figma, Adobe XD</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-database"></i>
+                        <h4>Database</h4>
+                        <p>MySQL, PostgreSQL</p>
+                    </div>
+                </div>
             </div>
-          </a>
-          <a href="https://instagram.com/11pplg.one" target="_blank"
-            class="social-link-card bg-gray-800 border-gray-700 hover:bg-gray-700">
-            <div class="icon-circle bg-gray-700 text-white mr-3"><i class="fab fa-instagram"></i></div>
-            <div>
-              <h6 class="mb-0 text-white">Instagram Kelas</h6>
-              <span class="text-sm text-gray-400">@12pplg.one</span>
+        </div>
+    </section>
+
+    <!-- Riwayat Wali Kelas -->
+    <section class="history-section">
+        <div class="container">
+            <div id="historyTeacherContainer"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-social">
+                    <a href="https://tiktok.com/@11pplg" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i> TikTok Kelas
+                    </a>
+                    <a href="https://instagram.com/11pplg.one" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Instagram Kelas
+                    </a>
+                    <a href="https://instagram.com/smkn1tlg" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Sekolah @smkn1tlg
+                    </a>
+                    <a href="https://instagram.com/pplg.smkn1talaga" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Jurusan PPLG
+                    </a>
+                </div>
+                <div class="footer-info">
+                    <h4>SMK Negeri 1 Talaga</h4>
+                    <p>Jl. Sekolah No. 20, Talaga Kulon, Kec. Talaga, Kab. Majalengka, Jawa Barat 45463</p>
+                    <p><i class="fas fa-phone"></i> (0233) 319238</p>
+                    <p><i class="fas fa-envelope"></i> smkn1talaga@sch.id</p>
+                    <p>
+                        <a href="http://smkn1talaga.sch.id" target="_blank">smkn1talaga.sch.id</a>
+                        <span>•</span>
+                        <a href="http://pplg.smkn1talaga.sch.id" target="_blank">pplg.smkn1talaga.sch.id</a>
+                    </p>
+                </div>
             </div>
-          </a>
-        </div>
-        <!-- Social Links Kanan -->
-        <div class="space-y-4">
-          <a href="https://instagram.com/smkn1tlg" target="_blank"
-            class="social-link-card bg-gray-800 border-gray-700 hover:bg-gray-700">
-            <div class="icon-circle bg-gray-700 text-white mr-3"><i class="fab fa-instagram"></i></div>
-            <div>
-              <h6 class="mb-0 text-white">Sekolah @smkn1tlg</h6>
-              <span class="text-sm text-gray-400">instagram.com/smkn1tlg</span>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PPLG.ONE · SMKN 1 Talaga · Dibangun dengan performa tinggi & desain profesional</p>
             </div>
-          </a>
-          <a href="https://instagram.com/pplg.smkn1talaga" target="_blank"
-            class="social-link-card bg-gray-800 border-gray-700 hover:bg-gray-700">
-            <div class="icon-circle bg-gray-700 text-white mr-3"><i class="fab fa-instagram"></i></div>
-            <div>
-              <h6 class="mb-0 text-white">Jurusan PPLG</h6>
-              <span class="text-sm text-gray-400">@pplg.smkn1talaga</span>
-            </div>
-          </a>
         </div>
-      </div>
+    </footer>
 
-      <!-- Info Sekolah -->
-      <div class="bg-gray-800 rounded-2xl p-6 text-center border border-gray-700">
-        <i class="fas fa-map-marker-alt text-blue-400 text-2xl mb-3"></i>
-        <h5 class="text-lg font-semibold text-white">SMK Negeri 1 Talaga</h5>
-        <p class="text-sm text-gray-400">Jl. Sekolah No. 20, Talaga Kulon, Kec. Talaga, Kab. Majalengka, Jawa Barat
-          45463</p>
-        <div class="flex flex-wrap justify-center gap-4 mt-3">
-          <span class="text-sm text-gray-400"><i class="fas fa-phone mr-1"></i> (0233) 319238</span>
-          <span class="text-sm text-gray-400"><i class="fas fa-envelope mr-1"></i> smkn1talaga@sch.id</span>
-        </div>
-        <div class="flex flex-wrap justify-center gap-4 mt-3">
-          <a href="http://smkn1talaga.sch.id" target="_blank"
-            class="text-sm text-blue-400 hover:text-blue-300 transition">smkn1talaga.sch.id</a>
-          <span class="text-gray-600">•</span>
-          <a href="http://pplg.smkn1talaga.sch.id" target="_blank"
-            class="text-sm text-blue-400 hover:text-blue-300 transition">pplg.smkn1talaga.sch.id</a>
-        </div>
-      </div>
-
-      <div class="border-t border-gray-800 mt-8 pt-6 text-center">
-        <p class="text-sm text-gray-500">&copy; 2024 PPLG.ONE · SMKN 1 Talaga · Dibangun dengan performa tinggi & desain
-          profesional</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Hitung jumlah data secara otomatis
-    const students = ['AI_MUHLIAWATI.jpg', 'ALIN_NUR_ALIAH.jpg', 'ALYA_PUTRI_NURARENI.jpg', 'AZIS_MAULANA.jpg', 'DAVIAN_GUSTI_AGRAPRANA.jpg', 'DEP_FRANS_PURNAMALILA_KOSASIH.jpg', 'DZAKI_DZIYA_DZAIFULLOH.jpg', 'FINO_AGUSTIANI_ROMADHON.jpg', 'FIRMAN_HIDAYAT.jpg', 'IRZA_RADITYA_DARMAWAN.jpg', 'IYAN_HIDAYAT.jpg', 'MOCH_RIFKA_AL_FARIZ.jpg', 'MUHAMMAD_AFGHAN_AL_KHAWARIZMI.jpg', 'NAZHAR_PADLAN.jpg', 'NEZHLA_AGUSTIN_NURHALIZA.jpg', 'NINDA_DWIYANTI_SOMANTRI.jpg', 'NOFAL_EKACHYADI.jpg', 'RAFI_MAULANA.jpg', 'RAFI_MUHAMMAD_RODLIANI.jpg', 'REZKY_NUR_AZMI_YUDIANA.jpg', 'RIZKI_ADHAYANI.jpg', 'ROMY_ADHITYA_PERMANA.jpg', 'SAEPULOH.jpg', 'SAUPIYAN_TSAURI.jpg', 'SELPI.jpg', 'SIGITH_SUGIARTO.jpg', 'SYIFA_RAHILA_NURHARITS.jpg', 'VITA_NOVIA.jpg', 'YORIS_YANUAR_FAJAR_ALI.jpg', 'YUNI_FEBRIYANI.jpg'];
-    const totalGallery = 82;
-
-    document.getElementById('totalStudents').textContent = students.length;
-    document.getElementById('totalGallery').textContent = totalGallery;
-
-    // Mobile menu
-    document.getElementById('menuBtn').addEventListener('click', function () {
-      const nav = document.querySelector('.md\\:flex');
-      nav.classList.toggle('hidden');
-      nav.classList.toggle('flex');
-      nav.classList.toggle('flex-col');
-      nav.classList.toggle('absolute');
-      nav.classList.toggle('top-16');
-      nav.classList.toggle('left-0');
-      nav.classList.toggle('w-full');
-      nav.classList.toggle('bg-white');
-      nav.classList.toggle('p-4');
-      nav.classList.toggle('shadow-lg');
-    });
-  </script>
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="students.js"></script>
+    <script src="wali-kelas.js"></script>
+    <script src="gallery.js"></script>
+    <script src="projects.js"></script>
+    <script src="app.js"></script>
 </body>
-
-</html>
+</html> 
