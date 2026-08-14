@@ -19,8 +19,6 @@ class PPLGApp {
         this.renderProjects();
         this.renderWaliKelasHistory();
         this.renderHeroStats();
-        this.setupMobileMenu();
-        this.setupNavbarActive();
         
         // Cek setiap 30 detik
         this.publishCheckInterval = setInterval(() => {
@@ -331,60 +329,6 @@ class PPLGApp {
         document.getElementById('totalProjects').textContent = this.projectsData.length;
     }
 
-    // Setup mobile menu - FIXED
-    setupMobileMenu() {
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (!menuBtn || !navLinks) return;
-        
-        menuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navLinks.classList.toggle('active');
-            const icon = this.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            }
-        });
-        
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            });
-        });
-    }
-
-    // Setup navbar active link
-    setupNavbarActive() {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    }
 }
 
 // Inisialisasi
