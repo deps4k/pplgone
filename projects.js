@@ -27,6 +27,20 @@ const PROJECTS_DATA = [
         desc: "Landing page modern untuk company profile tech company.", 
         tech: "Laravel, Bootstrap",
         year: "2025"
+    },
+    { 
+        file: "pr5.png", 
+        title: "Latihan UKK Web Sekolah", 
+        desc: "Landing page modern dan minimalis untk website Sekolah.", 
+        tech: "PHP, Laravel",
+        year: "2025"
+    },
+    { 
+        file: "pr6.png", 
+        title: "Latihan UKK Web Desa", 
+        desc: "Landing page modern dan minimalis untk website desa.", 
+        tech: "Laravel, Bootstrap",
+        year: "2026"
     }
 ];
 
