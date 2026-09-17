@@ -33,7 +33,7 @@ const PROJECTS_DATA = [
         title: "Latihan UKK Web Sekolah", 
         desc: "Landing page modern dan minimalis untk website Sekolah.", 
         tech: "PHP, Laravel",
-        year: "2025"
+        year: "2026"
     },
     { 
         file: "pr6.png", 
