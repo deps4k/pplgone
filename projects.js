@@ -31,14 +31,14 @@ const PROJECTS_DATA = [
     { 
         file: "pr5.png", 
         title: "Latihan UKK Web Sekolah", 
-        desc: "Landing page modern dan minimalis untk website Sekolah.", 
+        desc: "Landing page modern dan minimalis untk website Sekolah, Dan kami sedang latihan ujian keahlian kompetensi.", 
         tech: "PHP, Laravel",
         year: "2026"
     },
     { 
         file: "pr6.png", 
         title: "Latihan UKK Web Desa", 
-        desc: "Landing page modern dan minimalis untk website desa.", 
+        desc: "Landing page modern dan minimalis untk website desa, Dan kami sedang latihan ujian keahlian kompetensi.", 
         tech: "Laravel, Bootstrap",
         year: "2026"
     }
