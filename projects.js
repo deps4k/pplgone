@@ -41,6 +41,13 @@ const PROJECTS_DATA = [
         desc: "Proyek latihan pembuatan website desa dengan desain modern, minimalis, dan responsif sebagai persiapan Uji Kompetensi Keahlian (UKK).",
         tech: "Laravel, Bootstrap",
         year: "2026"
+    },
+    {
+        file: "pr7.png",
+        title: "Simulasi UKK Web Sekolah",
+        desc: "Proyek simulasi website sekolah dengan desain yang mengacu pada tampilan dan struktur website sekolah asli, kemudian dikembangkan dengan desain modern, minimalis, dan responsif.",
+        tech: "Laravel, Bootstrap",
+        year: "2026"
     }
 ];
 
